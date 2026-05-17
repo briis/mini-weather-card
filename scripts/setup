@@ -9,3 +9,8 @@ python3 -m pip install --requirement requirements.txt
 wget https://github.com/AlexxIT/go2rtc/releases/download/v1.9.14/go2rtc_linux_arm64
 sudo mv go2rtc_linux_arm64 /bin/go2rtc
 sudo chmod +x /bin/go2rtc
+
+# Ensure the www directory is accessible to Home Assistant at /local/
+if [[ ! -L "${PWD}/config/www" ]]; then
+    ln -s "${PWD}/www" "${PWD}/config/www"
+fi
