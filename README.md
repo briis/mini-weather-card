@@ -10,16 +10,16 @@ A compact, single-row Lovelace card for Home Assistant, designed for the Section
     <td align="center"><b>Minimal · Dark</b></td>
   </tr>
   <tr>
-    <td><img src="docs/card_minimal_light.png" alt="Minimal config, light theme"></td>
-    <td><img src="docs/card_minimal_dark.png" alt="Minimal config, dark theme"></td>
+    <td><img src="https://raw.githubusercontent.com/briis/mini-weather-card/main/docs/card_minimal_light.png" alt="Minimal config, light theme"></td>
+    <td><img src="https://raw.githubusercontent.com/briis/mini-weather-card/main/docs/card_minimal_dark.png" alt="Minimal config, dark theme"></td>
   </tr>
   <tr>
     <td align="center"><b>Complete · Light</b></td>
     <td align="center"><b>Complete · Dark</b></td>
   </tr>
   <tr>
-    <td><img src="docs/card_complete_light.png" alt="Complete config, light theme"></td>
-    <td><img src="docs/card_complete_dark.png" alt="Complete config, dark theme"></td>
+    <td><img src="https://raw.githubusercontent.com/briis/mini-weather-card/main/docs/card_complete_light.png" alt="Complete config, light theme"></td>
+    <td><img src="https://raw.githubusercontent.com/briis/mini-weather-card/main/docs/card_complete_dark.png" alt="Complete config, dark theme"></td>
   </tr>
 </table>
 
