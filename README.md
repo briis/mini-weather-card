@@ -1,17 +1,38 @@
 # Minimalistic Weather Card
 
-A compact, single-row Lovelace card for Home Assistant, designed for the Section view layout. It shows the current weather condition, temperature, high/low forecast, and optional sensor data (rain, wind) — all in a clean two-row grid that aligns neatly with other cards.
+A compact, single-row Lovelace card for Home Assistant, designed for the Section view layout. It shows the current weather condition, temperature, high/low forecast, optional sensor data, and a forecast row — all in a clean layout that aligns neatly with other cards.
 
-<!-- Screenshots go here -->
+## Screenshots
+
+<table>
+  <tr>
+    <td align="center"><b>Minimal · Light</b></td>
+    <td align="center"><b>Minimal · Dark</b></td>
+  </tr>
+  <tr>
+    <td><img src="docs/card_minimal_light.png" alt="Minimal config, light theme"></td>
+    <td><img src="docs/card_minimal_dark.png" alt="Minimal config, dark theme"></td>
+  </tr>
+  <tr>
+    <td align="center"><b>Complete · Light</b></td>
+    <td align="center"><b>Complete · Dark</b></td>
+  </tr>
+  <tr>
+    <td><img src="docs/card_complete_light.png" alt="Complete config, light theme"></td>
+    <td><img src="docs/card_complete_dark.png" alt="Complete config, dark theme"></td>
+  </tr>
+</table>
 
 ## Features
 
 - Colorful weather icons matching the native HA weather card
 - Current temperature and today's high/low (via the `weather/subscribe_forecast` API)
-- Optional rain, wind speed, and wind direction sensors
+- Forecast row with auto-fitting items (daily or hourly)
+- Five optional sensor slots: rain, wind speed, wind bearing, pressure, UV index
+- Colored sensor icons (rain: blue, wind: red, pressure: green, UV: amber)
 - Tap, hold, and double-tap actions
-- Full UI editor support
-- Supports multiple languages (English, Danish, German, French, Spanish)
+- Full UI editor built on native `ha-form`
+- Translated editor labels (English, Danish, German, French, Spanish)
 
 ## Installation
 
@@ -50,6 +71,10 @@ name: Outside
 rain_entity: sensor.rain_today
 wind_speed_entity: sensor.wind_speed
 wind_bearing_entity: sensor.wind_bearing
+pressure_entity: sensor.pressure
+uv_entity: sensor.uv_index
+forecast_show: true
+forecast_type: hourly
 tap_action:
   action: more-info
 hold_action:
@@ -64,9 +89,13 @@ double_tap_action:
 |---|---|---|---|
 | `entity` | string | **required** | A `weather.*` entity |
 | `name` | string | Entity friendly name | Label shown in the top-left |
-| `rain_entity` | string | — | Sensor entity for today's rain accumulation |
-| `wind_speed_entity` | string | — | Sensor entity for wind speed |
-| `wind_bearing_entity` | string | — | Sensor entity for wind bearing in degrees (0–360) |
+| `rain_entity` | string | — | Sensor for today's rain accumulation |
+| `wind_speed_entity` | string | — | Sensor for wind speed |
+| `wind_bearing_entity` | string | — | Sensor for wind bearing in degrees (0–360) |
+| `pressure_entity` | string | — | Sensor for atmospheric pressure |
+| `uv_entity` | string | — | Sensor for UV index |
+| `forecast_show` | boolean | `false` | Show the forecast row |
+| `forecast_type` | string | `daily` | Forecast granularity: `daily` or `hourly` |
 | `tap_action` | action | `more-info` | Action on single tap |
 | `hold_action` | action | `none` | Action on long press (≥ 500 ms) |
 | `double_tap_action` | action | `none` | Action on double tap |
@@ -89,18 +118,6 @@ hold_action:
   action: url
   url_path: https://yr.no
 ```
-
-## Layout
-
-```
-┌─────────────────────────────────────────────────────┐
-│  ⛅  OUTSIDE              2.6 mm        13°C        │
-│       Partly cloudy       ▼ S · 21 km/h  13° / 11°  │
-└─────────────────────────────────────────────────────┘
-```
-
-- **Top row:** name, optional rain, current temperature
-- **Bottom row:** condition, optional wind direction + speed, high/low forecast
 
 ## Development
 
